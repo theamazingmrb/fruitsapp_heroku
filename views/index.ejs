@@ -7,13 +7,18 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
+    <nav>
+      <a href="/fruits/new">Create a New Fruit</a>
+    </nav>
     <h1>Index Page</h1>
    <ul> 
         <% fruits.forEach((item, index) => { %>
         <li>
             <a href=<%= `/fruits/${index}` %>><%= item.name %></a>
             <!-- <a href="/fruits/<%= index %>"><%= item.name %></a> -->
-            
+            <form action="/fruits/<%= index %>?_method=DELETE" method="post">
+              <input type="submit" value="DELETE">
+            </form>
         </li>
         <% }) %>
     </ul>

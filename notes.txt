@@ -14,6 +14,7 @@ POST - POST request are to create or persist some data in a database (app.post('
 
 PUT/PATCH - Update some data in the database
 
+DELETE - Delete
 The 7 RESTful routes
 These routes allow full CRUD routes for a specific type of data
 
