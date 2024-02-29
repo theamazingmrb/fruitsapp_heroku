@@ -7,6 +7,9 @@
     
 </head>
 <body>
+    <nav>
+        <%- include('./partials/nav.ejs') %>
+      </nav>
     <h1>Fruits Show Page</h1>
     <p>
     <% if(fruit){ %>
@@ -25,8 +28,11 @@
 
     <% } %>
 </p>
-<a href="/fruits/<%= fruit._id %>/edit">Edit this Fruit</a>
+<div class="showPageContainer">
+    <a href="/fruits/<%= fruit._id %>/edit">Edit this Fruit</a>
     <a href="/">Home</a>
+</div>
+
 
     <%- include('./partials/footer.ejs') %>
 </body>

@@ -22,14 +22,11 @@ const db = require('../models')
 // INDEX - see all items routes. get all items out the db and send to the user
 router.get('/', (req, res)=> {
     db.Fruit.find({})
-        .then(fruits => {
-            res.render('index.ejs', {fruits: fruits} )
-        })
+        .then(fruits => {res.render('fruit-home', {fruits: fruits} )})
     // res.send(fruits) - res.send sends back raw data or html
     // to send ejs we use
     // ------- res.render(view, {data})
     // - view represents an ejs page, will check for this file name in the views folder
-    // - {data} - represents and data we want this page to use that is dynmic /changing
     // noramally in an object {keßy: value}
     // when a key and value have the same name you ca n just put the variable there
     
@@ -37,7 +34,7 @@ router.get('/', (req, res)=> {
 
 // NEW - Send back a form to create new fruits
 router.get('/new', (req, res) => {
-    res.render('new')
+    res.render('new-fruit')
 })
 
 // CREATE / POST / route= "/fruits"
@@ -56,7 +53,7 @@ router.post("/", async (req, res) => {
 router.get('/:id', function (req, res) {
     db.Fruit.findById(req.params.id)
         .then(fruit => {
-            res.render('show', {
+            res.render('fruit-details', {
                 fruit: fruit
             })
         })
@@ -68,7 +65,7 @@ router.get('/:id', function (req, res) {
 router.get('/:id/edit', (req, res) => {
     db.Fruit.findById(req.params.id)
         .then(fruit => {
-            res.render('edit-form', {
+            res.render('edit-fruit', {
                 fruit: fruit
             })
         })
@@ -91,7 +88,6 @@ router.put('/:id', async (req, res) => {
 // Destroy Route (DELETE/Delete): This route deletes a fruit document 
 // using the URL parameter (which will always be the fruit document's ID)
 router.delete('/:id', async (req, res) =>{
-    console.log("I am here")
     await db.Fruit.findByIdAndDelete(req.params.id)
     .then(() => res.redirect('/fruits'))
 })
