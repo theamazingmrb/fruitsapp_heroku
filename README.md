@@ -1,5 +1,5 @@
 # Fruits App - MEN Stack Walkthrough
-<img src="https://i.imgur.com/XVAEXF9.jpg" width="100%">
+<img src="https://i.imgur.com/4fW408l.png" width="100%">
 
 
 
