@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show Page</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <head>
+        <%- include('./partials/head.ejs', {title: 'Show Page'}) %>
+    </head>
+    
 </head>
 <body>
+    <nav>
+        <%- include('./partials/nav.ejs') %>
+      </nav>
     <h1>Fruits Show Page</h1>
     <p>
     <% if(fruit){ %>
@@ -25,6 +28,12 @@
 
     <% } %>
 </p>
-    <a href="/fruits">Go back</a>
+<div class="showPageContainer">
+    <a href="/fruits/<%= fruit._id %>/edit">Edit this Fruit</a>
+    <a href="/">Home</a>
+</div>
+
+
+    <%- include('./partials/footer.ejs') %>
 </body>
 </html>

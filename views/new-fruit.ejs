@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="vißewport" content="width=device-width, initial-scale=1.0">
-    <title>New Fruit</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <%- include('./partials/head.ejs', {title: `New Fruit`}) %>
+    <link rel="stylesheet" href="/css/forms.css">
 </head>
 <body>
     <h1>Create New Fruit</h1>
@@ -18,5 +16,7 @@
         <input type="submit" value="Create Fruit"/>
     </form>
     <a href=" /fruits">Go back</a>
+
+    <%- include('./partials/footer.ejs') %>
 </body>
 </html>

@@ -1,7 +1,3 @@
-// Later this will not be an array it will be the actual mode
-// connected to a database
-
-// aka fruits model
 const fruits = [
     {
         name:'apple',
@@ -20,4 +16,4 @@ const fruits = [
     }
 ]
 
-module.exports = fruits // we can export anything js but it must exist in this file
+module.exports = fruits
