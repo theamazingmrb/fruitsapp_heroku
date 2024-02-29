@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show Page</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <head>
+        <%- include('./partials/head.ejs', {title: 'Show Page'}) %>
+    </head>
+    
 </head>
 <body>
     <h1>Fruits Show Page</h1>
@@ -25,7 +25,9 @@
 
     <% } %>
 </p>
-<button class="btn"><a href="/fruits/<%= fruit._id %>/edit">Edit this Fruit</a></button>
-    <a href="/fruits">Go back</a>
+<a href="/fruits/<%= fruit._id %>/edit">Edit this Fruit</a>
+    <a href="/">Home</a>
+
+    <%- include('./partials/footer.ejs') %>
 </body>
 </html>

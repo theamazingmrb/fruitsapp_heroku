@@ -14,7 +14,13 @@ h1, span, p {
   padding: 1em;
   text-align: center;
 }
-
+h4 {
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px black;
+  font-size: 1.5em;
+  background: rgba(193, 235, 187, .9);
+}
 a {
   color: orange;
   text-decoration: none;
@@ -28,9 +34,13 @@ a {
 a:hover {
   color: ghostwhite;
 }
-
+ul{
+  display: flex;
+  justify-content: space-between;
+}
 li {
   list-style: none;
+  
 }
 
 li a {
@@ -48,4 +58,5 @@ input[type=submit] {
   font-size: 1em;
   border-radius: 10%;
 }
+
 

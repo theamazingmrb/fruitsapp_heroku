@@ -69,6 +69,10 @@ app.get('/seed', function (req, res) {
                 })
         })
 });
+// render the about us page
+app.get('/about', function (req, res) {
+    res.render('about')
+});
 
 // This tells our app to look at the `controllers/fruits.js` file 
 // to handle all routes that begin with `localhost:3000/fruits`

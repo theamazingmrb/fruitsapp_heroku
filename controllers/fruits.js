@@ -77,9 +77,9 @@ router.get('/:id/edit', (req, res) => {
 // Update Route (PUT/Update): This route receives the PUT request sent from the edit route, 
 // edits the specified fruit document using the form data,
 // and redirects the user back to the show page for the updated location.
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
     req.body.readyToEat = req.body.readyToEat === 'on' ? true : false
-    db.Fruit.findByIdAndUpdate(
+    await db.Fruit.findByIdAndUpdate(
         req.params.id,
         req.body,
         { new: true }
@@ -90,9 +90,9 @@ router.put('/:id', (req, res) => {
 
 // Destroy Route (DELETE/Delete): This route deletes a fruit document 
 // using the URL parameter (which will always be the fruit document's ID)
-router.delete('/:id', (req, res) =>{
+router.delete('/:id', async (req, res) =>{
     console.log("I am here")
-    db.Fruit.findByIdAndDelete(req.params.id)
+    await db.Fruit.findByIdAndDelete(req.params.id)
     .then(() => res.redirect('/fruits'))
 })
 
