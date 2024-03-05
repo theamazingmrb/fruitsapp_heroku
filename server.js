@@ -7,6 +7,7 @@ const livereload = require("livereload");
 const connectLiveReload = require("connect-livereload");
 const methodOverride = require('method-override') 
 const morgan = require('morgan')
+const session = require('express-session')
 
 // process.env will look at the environment for environment variables
 const PORT = process.env.PORT || 3001
@@ -17,7 +18,8 @@ const PORT = process.env.PORT || 3001
 const db = require('./models');
 
 const fruitsCtrl = require('./controllers/fruits')
-
+const userCtrl = require('./controllers/userController')
+const sessionCtrl = require('./controllers/sessionController')
 /* Create the Express app
 --------------------------------------------------------------- */
 const app = express();
@@ -47,6 +49,15 @@ app.use(connectLiveReload());
 // this will take incoming strings from the body that are URL encoded and parse them 
 // into an object that can be accessed in the request parameter as a property called body (req.body).
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+// Session middleware: This will allow us to store data on the server between requests
+app.use(session({
+    secret: process.env.SECRET_KEY, // use to scramble the cookie
+    resave: false,
+    saveUninitialized: false
+}))
+// app.use(isAuthenticated)
+
 // Allows us to interpret POST requests from the browser as another request type: DELETE, PUT, etc.
 app.use(methodOverride('_method'));
 app.use(morgan('tiny')) // morgan is just a logger
@@ -77,6 +88,8 @@ app.get('/about', function (req, res) {
 // This tells our app to look at the `controllers/fruits.js` file 
 // to handle all routes that begin with `localhost:3000/fruits`
 app.use('/fruits', fruitsCtrl)
+app.use('/users', userCtrl)
+app.use('/sessions', sessionCtrl) // handles login and logout
 
 // The "catch-all" route: Runs for any other URL that doesn't match the above routes
 app.get('*', function (req, res) {
